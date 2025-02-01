@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "cfe58ac7-cd40-480f-8db8-2be1f6246f8b",
+		"name": "PetShopTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41336531"
+	},
+	"item": [
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "FindPetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1130"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPetById - 400",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/^",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"^"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindPetById - 404",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/78b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"78b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewPet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 33,\r\n    \"category\": {\r\n        \"id\": 7,\r\n        \"name\": \"Labrador\"\r\n    },\r\n    \"name\": \"Baron\",\r\n    \"photoUrls\": [\r\n        \"http//labradorpictures.com/smile.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"HappyDog\"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyNewPetCreated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/33",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateExistigPet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 33,\r\n    \"category\": {\r\n        \"id\": 7,\r\n        \"name\": \"Labrador\"\r\n    },\r\n    \"name\": \"Baron\",\r\n    \"photoUrls\": [\r\n        \"http//labradorpictures.com/smile.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"Happy Dog With Happy Heart Love\"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewPet01",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 88,\r\n    \"category\": {\r\n        \"id\": 9,\r\n        \"name\": \"German separd\"\r\n    },\r\n    \"name\": \"Baron\",\r\n    \"photoUrls\": [\r\n        \"http//Germandog.com/life.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 18,\r\n            \"name\": \"Securitydog and smart\"\r\n        }\r\n    ],\r\n    \"status\": \"availible\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePetFromStore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "special-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/pet/88",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"88"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddNewAnimalInStore",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var rndId= Math.floor(Math.random()*10000)+1\r",
+									"pm.environment.set(\"id\", rndId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{id}},\r\n    \"category\": {\r\n        \"id\": 7,\r\n        \"name\": \"Labrador\"\r\n    },\r\n    \"name\": \"Baroniiii\",\r\n    \"photoUrls\": [\r\n        \"http//labradorpictures.com/smile.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 15,\r\n            \"name\": \"HappyDogssssss\"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test.Environments.Variables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get.With.Data.Variables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Added.Five.Animals.Data.Var",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var rndId= Math.floor(Math.random()*10000)+1\r",
+									"pm.environment.set(\"id\", rndId);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var rndId= Math.floor(Math.random()*10000)+1\r",
+									"pm.environment.set(\"id\", rndId)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{id}},\r\n    \"category\": {\r\n        \"id\": 9,\r\n        \"name\": \"{{categoryName}}\"\r\n    },\r\n    \"name\": \"{{petName}}\",\r\n    \"photoUrls\": [\r\n        \"http//Germandog.com/life.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 18,\r\n            \"name\": \"{{tagName}}\"\r\n        }\r\n    ],\r\n    \"status\": \"{{status}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyAddedAnimal.Data.Variabiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pet/2930",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet",
+								"2930"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Place an order for a pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Verify petId is correct: \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.petId).to.eql(88);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify quantity is correct: \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.quantity).to.eql(22);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify status is correct: \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql(\"placed\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify complete is correct: \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.complete).to.eql(true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 77,\r\n  \"petId\": 88,\r\n  \"quantity\": 22,\r\n  \"shipDate\": \"2025-02-01T12:13:32.798Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/store/order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Added Place an Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/store/order/77",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								"order",
+								"77"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": []
+		}
+	]
+}

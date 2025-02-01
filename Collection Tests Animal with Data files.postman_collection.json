@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "18473081-bc01-4fba-bf9d-0e7d8049039f",
+		"name": "Collection Tests Animal with Data files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41336531"
+	},
+	"item": [
+		{
+			"name": "Tests Animal with Data files",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var rndId= Math.floor(Math.random()*10000)+1\r",
+							"pm.environment.set(\"id\", rndId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that status are correct \" + pm.variables.get(\"status\"), function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var status = pm.variables.get(\"status\");\r",
+							"    pm.expect(jsonData.status).to.eql(status);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that petName are correct \" + pm.variables.get(\"petName\"), function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var petName = pm.variables.get(\"petName\");\r",
+							"    pm.expect(jsonData.name).to.eql(petName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that tagName are correct \" + pm.variables.get(\"tagName\"), function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var tagName = pm.variables.get(\"tagName\");\r",
+							"    pm.expect(jsonData.tags[0].name).to.eql(tagName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify that categoryName are correct \" + pm.variables.get(\"categoryName\"), function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var categoryName = pm.variables.get(\"categoryName\");\r",
+							"    pm.expect(jsonData.category.name).to.eql(categoryName);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{id}},\r\n    \"category\": {\r\n        \"id\": 9,\r\n        \"name\": \"{{categoryName}}\"\r\n    },\r\n    \"name\": \"{{petName}}\",\r\n    \"photoUrls\": [\r\n        \"http//Germandog.com/life.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 18,\r\n            \"name\": \"{{tagName}}\"\r\n        }\r\n    ],\r\n    \"status\": \"{{status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

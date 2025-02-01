@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "8c7f9cc8-7733-4103-a9cd-9259e6ec6cd5",
+		"name": "DogShopTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41336531"
+	},
+	"item": [
+		{
+			"name": "Dogs",
+			"item": [
+				{
+					"name": "AddNewDog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 102,\r\n  \"category\": {\r\n    \"id\": 107,\r\n    \"name\": \"Buldog\"\r\n  },\r\n  \"name\": \"Baroni\",\r\n  \"photoUrls\": [\r\n    \"http//bildogpictures.com//life.jpg\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 101,\r\n      \"name\": \"Safe dog\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyAddedNewDog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/102",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateExistigDog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 102,\r\n    \"category\": {\r\n        \"id\": 107,\r\n        \"name\": \"Buldog\"\r\n    },\r\n    \"name\": \"Baroni\",\r\n    \"photoUrls\": [\r\n        \"http//bildogpictures.com//life.jpg\"\r\n    ],\r\n    \"tags\": [\r\n        {\r\n            \"id\": 101,\r\n            \"name\": \"Safe dog for kind's \"\r\n        }\r\n    ],\r\n    \"status\": \"sold\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyUpdatedExistigDog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/102",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteDogFromDogShop",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "api_key",
+								"value": "special-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/102",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"102"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyDeletedDogFromShop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/102",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"102"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
