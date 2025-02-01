@@ -1,1 +1,1 @@
-# api_testing_postman_petstore
+# api_testing_postman_petstore_exersices
